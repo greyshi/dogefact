@@ -1,0 +1,4 @@
+httplib2==0.8
+six==1.5.2
+twilio==3.6.6
+wsgiref==0.1.2

@@ -1,0 +1,1 @@
+* * * * * /Users/arash/.virtualenvs/dogefact/bin/python /Users/arash/projects/dogefact/dogehouse/manage.py runcrons

@@ -1,1 +1,1 @@
-web: gunicorn dogehouse.wsgi
+web: newrelic-admin run-program gunicorn dogehouse.wsgi

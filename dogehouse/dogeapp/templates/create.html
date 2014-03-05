@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
   <div class="container">
-    <h1>Users!</h1>
+    <h1><a href="#button">Users!</a></h1>
     {% for u in users %}
       <p>{{ u.phone_number }}</p>
     {% endfor %}
@@ -10,6 +10,6 @@
     {% for m in messages %}
       <p>{{ m.content }}</p>
     {% endfor %}
-    <p><a class="btn btn-success btn-lg" role="button" href="/">DOGHAUS</a></p>
+    <p><a name="button" class="btn btn-success btn-lg" role="button" href="/">DOGHAUS</a></p>
   </div>
 {% endblock content %}

@@ -1,3 +1,7 @@
+Django==1.6.2
+South==0.8.4
+django-common-helpers==0.6.0
+django-cron==0.3.3
 httplib2==0.8
 six==1.5.2
 twilio==3.6.6

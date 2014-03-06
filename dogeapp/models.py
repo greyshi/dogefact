@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 
 class User(models.Model):
@@ -25,3 +26,8 @@ class Message(models.Model):
         ordering = ['pub_date']
         verbose_name_plural = "Messages"
 
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['phone_number']

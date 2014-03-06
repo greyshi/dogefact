@@ -9,10 +9,11 @@
     <div class="col-md-7 col-sm-12">
       <h1> <span style="color: #666666">Doge Facts</span></h1>
       <p>much shiba inu fact, plz sub<strong>shibe</strong> below</p>
-      <form role="form" onsubmit="alert(document.getElementById('inputPhone').value)">
+      <form role="form" action="/subscribe/" method="post">
+        {% csrf_token %}
         <div class="row">
           <div class="form-group col-md-5 col-sm-4 col-ms-6 col-xs-10">
-            <input type="tel" class="form-control input-lg" id="inputPhone" placeholder="ur phone number">
+            <input type="tel" class="form-control input-lg" name="phone_number" id="phone_number" placeholder="ur phone number">
           </div>
           <div class="form-group col-md-3 col-sm-4 col-ms-6 col-xs-12">
             <button type="submit" class="btn btn-primary btn-lg">Subscribe</button>

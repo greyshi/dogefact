@@ -1,15 +1,16 @@
 import datetime
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from models import User, Message
+from models import User, Message, UserForm
 
 
 def home(request):
     return render(request, 'home.html')
 
-def create(request):
-    messages = Message.objects.all()
-    users = User.objects.all()
-    return render(request, 'create.html', {'users': users, 'messages': messages})
+
+def subscribe(request):
+    f = UserForm(request.POST)
+    f.save()
+    return redirect('home')
 

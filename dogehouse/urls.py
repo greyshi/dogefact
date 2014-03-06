@@ -5,7 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'dogeapp.views.home', name='home'),
-    url(r'^create/', 'dogeapp.views.create', name='create'),
+    url(r'^subscribe/', 'dogeapp.views.subscribe', name='subscribe'),
 
     url(r'^admin/', include(admin.site.urls)),
 )

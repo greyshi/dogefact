@@ -8,6 +8,13 @@
   <link href="{% static 'css/app.css' %}" rel="stylesheet">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script>
+    $(document).on("click", ".alert", function(e) {
+      bootbox.alert("Hello world!", function() {
+        console.log("Alert Callback");
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -21,14 +28,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Dogefact</a>
+        <a class="navbar-brand" href="/">Dogefact</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="container">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="/">Home</a></li>
             <li><a href="#">About</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Top Facts <b class="caret"></b></a>

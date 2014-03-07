@@ -3,13 +3,21 @@
 {% load staticfiles %}
 {% block content %}
 
+<div class="container">
+  {% if error %}
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" area-hidden="true">&times;</button>
+      {{ error }}
+    </div>
+  {% endif %}
+</div>
 
 <div class="container jumbotron">
   <div class="row">
     <div class="col-md-7 col-sm-12">
       <h1> <span style="color: #666666">Doge Facts</span></h1>
       <p>much shiba inu fact, plz sub<strong>shibe</strong> below</p>
-      <form role="form" action="/subscribe/" method="post">
+      <form role="form" id="phone_form" name="phone_form" action="/subscribe/" method="post" >
         {% csrf_token %}
         <div class="row">
           <div class="form-group col-md-5 col-sm-4 col-ms-6 col-xs-10">

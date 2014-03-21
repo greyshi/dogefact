@@ -2,9 +2,12 @@ import datetime
 
 from django_cron import CronJobBase, Schedule
 from twilio.rest import TwilioRestClient
+from twilio import TwilioRestException
 from models import User, Message
 from dogehouse.settings import BASE_DIR
 
+import smtplib
+from email.mime.text import MIMEText
 
 class SendMessages(CronJobBase):
     RUN_EVERY_MINS = 1
@@ -20,6 +23,7 @@ class SendMessages(CronJobBase):
 
         client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
         user_log = open(BASE_DIR + '/logs/users.log', 'a')
+        error_log = open(BASE_DIR + '/logs/error.log', 'a')
 
 
         messages = Message.objects.all()
@@ -28,11 +32,15 @@ class SendMessages(CronJobBase):
                 user_log.write("{0}, {1}, {2}\n".format(u.phone_number, u.start_date, datetime.datetime.utcnow()))
                 u.delete()
             else:
-                client.messages.create(
-                    to=u.phone_number,
-                    from_="+15128722226",
-                    body=messages[u.current_message].content,
-                )
+                try:
+                    client.messages.create(
+                        to=u.phone_number,
+                        from_="+15128722226",
+                        body=messages[u.current_message].content,
+                    )
+                except TwilioRestException as e:
+                    error_log.write("{0}, {1}, {2}\n".format(u.phone_number, datetime.datetime.utcnow(), e))
                 u.current_message += 1
                 u.save()
         user_log.close()
+        error_log.close()

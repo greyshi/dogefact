@@ -1,0 +1,12 @@
+8118811181, 2014-03-21 02:52:26.310455, 
+2817788774, 2014-03-21 02:52:26.900554, 
+2323, 2014-03-21 02:52:27.495225, 
+8118811181, 2014-03-21 03:00:04.059816, HTTP 400 error: 21211: The 'To' number 8118811181 is not a valid phone number.
+2817788774, 2014-03-21 03:00:04.734696, HTTP 400 error: 21608: The number +12817788774 is unverified. Trial accounts cannot send messages to unverified numbers; verify +12817788774 at twilio.com/user/account/phone-numbers/verified, or purchase a Twilio number to send messages to unverified numbers.
+2323, 2014-03-21 03:00:05.323998, HTTP 400 error: 21211: The 'To' number 2323 is not a valid phone number.
+8118811181, 2014-03-21 03:01:01.689318, HTTP 400 error: 21211: The 'To' number 8118811181 is not a valid phone number.
+2817788774, 2014-03-21 03:01:02.303744, HTTP 400 error: 21608: The number +12817788774 is unverified. Trial accounts cannot send messages to unverified numbers; verify +12817788774 at twilio.com/user/account/phone-numbers/verified, or purchase a Twilio number to send messages to unverified numbers.
+2323, 2014-03-21 03:01:03.271534, HTTP 400 error: 21211: The 'To' number 2323 is not a valid phone number.
+8118811181, 2014-03-21 03:02:01.693039, HTTP 400 error: 21211: The 'To' number 8118811181 is not a valid phone number.
+2817788774, 2014-03-21 03:02:02.314328, HTTP 400 error: 21608: The number +12817788774 is unverified. Trial accounts cannot send messages to unverified numbers; verify +12817788774 at twilio.com/user/account/phone-numbers/verified, or purchase a Twilio number to send messages to unverified numbers.
+2323, 2014-03-21 03:02:02.945645, HTTP 400 error: 21211: The 'To' number 2323 is not a valid phone number.

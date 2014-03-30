@@ -17,7 +17,7 @@
   </script>
 </head>
 
-<body>
+<body style="background-color:#fffbec">
   <nav class="navbar navbar-default container" role="navigation">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -35,27 +35,12 @@
       <div class="container">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
+            {% block nav %}
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Top Facts <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">wow</a></li>
-                <li><a href="#">cool</a></li>
-                <li><a href="#">plz</a></li>
-                <li class="divider"></li>
-                <li><a href="#">wow</a></li>
-                <li class="divider"></li>
-                <li><a href="#">concern</a></li>
-              </ul>
-            </li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact Us</a></li>
+            {% endblock nav %}
           </ul>
-          <form class="navbar-form navbar-right" style="margin-right: 10px" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
         </div><!-- /.navbar-collapse -->
       </div>
     </div><!-- /.container-fluid -->
@@ -66,8 +51,8 @@
   {% endblock content %}
 
   <footer class="container">
-    <span style="color: #666666; margin-left: -15px; padding-bottom: 15px">&copy; <script>document.write(new Date().getFullYear())</script></span>
-    <span class="pull-right" style="margin-right: -15px; padding-bottom: 15px">
+    <span style="color: #666666; margin-left: -15px; padding-bottom: 15px; padding-left: 5px">&copy; <script>document.write(new Date().getFullYear())</script></span>
+    <span class="pull-right" style="margin-right: -15px; padding-bottom: 15px; padding-right: 5px">
       <a href="mailto:halp@dogefact.com">Contact Us</a>
     </span>
 

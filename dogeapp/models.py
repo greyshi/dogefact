@@ -9,6 +9,8 @@ class User(models.Model):
     phone_number = models.CharField(max_length=500)
     start_date = models.DateTimeField('subscription start date', auto_now=True)
     current_message = models.PositiveSmallIntegerField(default=0)
+    confirmation_code = models.CharField(max_length=255)
+
 
     def __unicode__(self):
         return self.phone_number

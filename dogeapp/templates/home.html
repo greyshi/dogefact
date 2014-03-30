@@ -12,25 +12,32 @@
   {% endif %}
 </div>
 
-<div class="container jumbotron">
-  <div class="row">
-    <div class="col-md-7 col-sm-12">
-      <h1> <span style="color: #666666">Doge Facts</span></h1>
-      <p>much shiba inu fact, plz sub<strong>shibe</strong> below</p>
-      <form role="form" id="phone_form" name="phone_form" action="/subscribe/" method="post" >
-        {% csrf_token %}
-        <div class="row">
-          <div class="form-group col-md-5 col-sm-4 col-ms-6 col-xs-10">
-            <input type="tel" class="form-control input-lg" name="phone_number" id="phone_number" placeholder="ur phone number">
+<div class="container">
+  <div class="jumbotron" style="background-color:#faf3b9">
+    <div class="row">
+      <div class="col-md-7 col-sm-12">
+        <h1> <span style="color: #666666">Doge Facts</span></h1>
+        <p>
+        Get <b style="color:#666666">text messages</b> from <b style="color:#666666">Doge</b>, your favorite dog<br/>
+        1 amusing dog fact per day over 30 days for $1
+        </p>
+        <p style="font-size: 135%">10% of proceeds donated to <a href="http://www.hsi.org">Humane Society International</a></p>
+        <p style="font-size: 130%">much fact, sub<strong style="color:#666666">shibe</strong> below</p>
+        <form role="form" id="phone_form" name="phone_form" action="/subscribe/" method="post" >
+          {% csrf_token %}
+          <div class="row">
+            <div class="form-group col-md-5 col-sm-4 col-ms-6 col-xs-10">
+              <input type="tel" class="form-control input-lg" name="phone_number" id="phone_number" placeholder="ur phone number">
+            </div>
+            <div class="form-group col-md-3 col-sm-4 col-ms-6 col-xs-12">
+              <button type="submit" class="btn btn-primary btn-lg">Subscribe</button>
+            </div>
           </div>
-          <div class="form-group col-md-3 col-sm-4 col-ms-6 col-xs-12">
-            <button type="submit" class="btn btn-primary btn-lg">Subscribe</button>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <img class="img-responsive img-thumbnail" src="{% static 'images/doge.png' %}">
+        </form>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <img class="img-responsive img-thumbnail" src="{% static 'images/doge.png' %}">
+      </div>
     </div>
   </div>
 </div>

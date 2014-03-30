@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
-
 {% load staticfiles %}
 {% block content %}
-
 <div class="container">
   {% if error %}
     <div class="alert alert-danger alert-dismissable">
@@ -35,8 +33,9 @@
         </form>
         <em><p style="font-size: 115%">10% of proceeds donated to <a href="http://www.hsi.org">Humane Society International</a></p></em>
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-5 col-sm-6">
         <img class="img-responsive img-thumbnail" src="{% static 'images/doge.png' %}">
+        </img>
       </div>
     </div>
   </div>

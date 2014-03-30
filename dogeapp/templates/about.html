@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block nav %}
 <li><a href="/">Home</a></li>
 <li class="active"><a href="/about/">About</a></li>
@@ -19,7 +20,9 @@
       </p>
       <p>
         We give 10¢ of every $1 payment we get to <a href="http://www.hsi.org">Humane Society International</a>, so you can feel generous while enjoying those facts!
-      <p/>
+      </p>
+      <img class="img-responsive img-thumbnail" style="margin-top: 10px" src="{% static 'images/about.png' %}">
+      </img>
     </div>
   </div>
 </div>

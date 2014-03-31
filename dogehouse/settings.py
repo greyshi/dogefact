@@ -26,6 +26,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AWS_STORAGE_BUCKET_NAME = 'dogefact'
+AWS_ACCESS_KEY_ID = 'AKIAIDRIBGQGL3RTLVMQ'
+AWS_SECRET_ACCESS_KEY = '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'
 
 # Application definition
 
@@ -38,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'dogeapp',
     'django_cron',
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -91,6 +95,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'dogehouse/static'),
 )
+
+
+# S3 configuration
+#if not DEBUG:
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+STATIC_URL = S3_URL
 
 
 # HEROKU config

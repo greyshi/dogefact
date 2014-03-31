@@ -23,4 +23,3 @@ def subscribe(request):
         return render(request, 'home.html', {'error': e.message})
     f.save()
     return render(request, 'subscribe.html', {'phone_number': f['phone_number'].value()})
-

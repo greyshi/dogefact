@@ -105,7 +105,7 @@ if not DEBUG:
     STATIC_URL = S3_URL
 
     AWS_HEADERS = {
-        'Cache-Control': 'max-age=43200',
+        'Cache-Control': 'max-age=86400',
     }
 
 

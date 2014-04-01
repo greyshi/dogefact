@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'q2x2+4wfo8)!bh!2fknnafmza5af731%i^63r37iequ0dd_rm@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -99,9 +99,14 @@ STATICFILES_DIRS = (
 
 # S3 configuration
 if not DEBUG:
+    AWS_S3_CUSTOM_DOMAIN = 'd30hwkkwvbp5yo.cloudfront.net'
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
     STATIC_URL = S3_URL
+
+    AWS_HEADERS = {
+        'Cache-Control': 'max-age=43200',
+    }
 
 
 # HEROKU config

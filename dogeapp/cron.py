@@ -27,10 +27,11 @@ class SendMessages(CronJobBase):
 
 
         messages = Message.objects.all()
-        for u in User.objects.all():
+        for u in User.objects.filter(is_active=True):
             if u.current_message >= len(messages):
                 user_log.write("{0}, {1}, {2}\n".format(u.phone_number, u.start_date, datetime.datetime.utcnow()))
-                u.delete()
+                u.is_active = False
+                u.save()
             else:
                 try:
                     client.messages.create(

@@ -40,7 +40,8 @@ class SendMessages(CronJobBase):
                     )
                 except TwilioRestException as e:
                     error_log.write("{0}, {1}, {2}\n".format(u.phone_number, datetime.datetime.utcnow(), e))
-                u.current_message += 1
-                u.save()
+                else:
+                    u.current_message += 1
+                    u.save()
         user_log.close()
         error_log.close()

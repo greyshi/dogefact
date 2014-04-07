@@ -10,6 +10,7 @@ class User(models.Model):
     start_date = models.DateTimeField('subscription start date', auto_now=True)
     current_message = models.PositiveSmallIntegerField(default=0)
     confirmation_code = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
 
 
     def __unicode__(self):
@@ -21,7 +22,7 @@ class User(models.Model):
 
 
 class Message(models.Model):
-    content = models.CharField(max_length=500)
+    content = models.TextField()
     pub_date = models.DateTimeField('date published', auto_now_add=True,)
 
     def __unicode__(self):
@@ -40,11 +41,17 @@ class UserForm(ModelForm):
     def clean_phone_number(self):
         input_number = self['phone_number'].value()
         if not input_number:
-            raise ValidationError("You forgot to type the phone number!")
-        phone_number = [d for d in input_number if d in string.digits]
+            raise ValidationError("You didn't type a phone number!")
+        phone_number = ""
+        for c in input_number:
+            if c in string.digits:
+                phone_number += c
+            elif c not in string.punctuation:
+                raise ValidationError("The number you entered was invalid. Please try again.")
+
         if len(phone_number) < 10:
-            raise ValidationError("The phone number you entered was too short! Please try again.")
+            raise ValidationError("The phone number you entered was too short. Please try again.")
         if len(phone_number) > 15:
-            raise ValidationError("The phone number you entered was too long! Please try again.")
+            raise ValidationError("The phone number you entered was too long. Please try again.")
         return input_number
 

@@ -31,7 +31,11 @@ class SendMessages(CronJobBase):
         # Gmail Credentials
         username = 'dogefact'
         password = 'dogepassword'
-      
+        server = smtplib.SMTP('smtp.gmail.com:587')  
+        server.ehlo()
+        server.starttls()  
+        server.ehlo()
+        server.login(username,password)  
 
         messages = Message.objects.all()
         for u in User.objects.filter(is_active=True):
@@ -51,11 +55,6 @@ class SendMessages(CronJobBase):
                     msg['From'] = from_address
                     msg['To'] = to_address
                     # Send Mail
-                    server = smtplib.SMTP('smtp.gmail.com:587')  
-                    server.ehlo()
-                    server.starttls()  
-                    server.ehlo()
-                    server.login(username,password)  
                     server.sendmail(from_address, [to_address, to_address_2], msg.as_string())  
                     server.quit()
                 else:

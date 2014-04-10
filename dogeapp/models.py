@@ -10,7 +10,7 @@ class User(models.Model):
     start_date = models.DateTimeField('subscription start date', auto_now=True)
     current_message = models.PositiveSmallIntegerField(default=0)
     confirmation_code = models.CharField(max_length=255)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
 
 
     def __unicode__(self):

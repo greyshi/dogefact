@@ -45,7 +45,7 @@ class SendMessages(CronJobBase):
                         body=messages[u.current_message].content,
                     )
                 except (TwilioRestException, Exception) as e:
-                    msg = MIMEText("{0}, {1}, {2}\n".format(u.phone_number, datetime.datetime.utcnow(), e)))
+                    msg = MIMEText("{0}, {1}, {2}\n".format(u.phone_number, datetime.datetime.utcnow(), e))
                     msg['Subject'] = "Dogefact Failure"
                     msg['From'] = from_address
                     msg['To'] = to_address

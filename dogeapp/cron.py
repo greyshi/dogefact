@@ -6,8 +6,9 @@ from twilio import TwilioRestException
 from models import User, Message
 from dogehouse.settings import BASE_DIR
 
-import smtplib
+import smtplib  
 from email.mime.text import MIMEText
+  
 
 class SendMessages(CronJobBase):
     RUN_EVERY_MINS = 1
@@ -16,20 +17,24 @@ class SendMessages(CronJobBase):
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS, run_at_times=RUN_AT_TIMES)
     code = 'dogeapp.send_messages'    # a unique code
 
+    from_address = 'dogefact@gmail.com'  
+    to_address  = 'arashghoreyshi@gmail.com'
+    to_address_2  = 'zakkeener@gmail.com'
+      
+    # Gmail Credentials
+    username = 'dogefact'
+    password = 'dogepassword'
+      
     def do(self):
         # put your own credentials here
         ACCOUNT_SID = "ACc05280a86f26b3e501c2773bda0b8ff5"
         AUTH_TOKEN = "c60430045deb77bddaa548e370cba36a"
 
         client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
-        user_log = open(BASE_DIR + '/logs/users.log', 'a')
-        error_log = open(BASE_DIR + '/logs/error.log', 'a')
-
 
         messages = Message.objects.all()
         for u in User.objects.filter(is_active=True):
             if u.current_message >= len(messages):
-                user_log.write("{0}, {1}, {2}\n".format(u.phone_number, u.start_date, datetime.datetime.utcnow()))
                 u.is_active = False
                 u.save()
             else:
@@ -39,10 +44,19 @@ class SendMessages(CronJobBase):
                         from_="+15128722226",
                         body=messages[u.current_message].content,
                     )
-                except TwilioRestException as e:
-                    error_log.write("{0}, {1}, {2}\n".format(u.phone_number, datetime.datetime.utcnow(), e))
+                except (TwilioRestException, Exception) as e:
+                    msg = MIMEText("{0}, {1}, {2}\n".format(u.phone_number, datetime.datetime.utcnow(), e)))
+                    msg['Subject'] = "Dogefact Failure"
+                    msg['From'] = from_address
+                    msg['To'] = to_address
+                    # Send Mail
+                    server = smtplib.SMTP('smtp.gmail.com:587')  
+                    server.ehlo()
+                    server.starttls()  
+                    server.ehlo()
+                    server.login(username,password)  
+                    server.sendmail(from_address, [to_address, to_address_2], msg.as_string())  
+                    server.quit()
                 else:
                     u.current_message += 1
                     u.save()
-        user_log.close()
-        error_log.close()

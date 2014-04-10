@@ -17,20 +17,21 @@ class SendMessages(CronJobBase):
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS, run_at_times=RUN_AT_TIMES)
     code = 'dogeapp.send_messages'    # a unique code
 
-    from_address = 'dogefact@gmail.com'  
-    to_address  = 'arashghoreyshi@gmail.com'
-    to_address_2  = 'zakkeener@gmail.com'
-      
-    # Gmail Credentials
-    username = 'dogefact'
-    password = 'dogepassword'
-      
     def do(self):
         # put your own credentials here
         ACCOUNT_SID = "ACc05280a86f26b3e501c2773bda0b8ff5"
         AUTH_TOKEN = "c60430045deb77bddaa548e370cba36a"
 
         client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
+        
+        from_address = 'dogefactact@gmail.com'  
+        to_address  = 'arashghoreyshi@gmail.com'
+        to_address_2  = 'zakkeener@gmail.com'
+          
+        # Gmail Credentials
+        username = 'dogefact'
+        password = 'dogepassword'
+      
 
         messages = Message.objects.all()
         for u in User.objects.filter(is_active=True):

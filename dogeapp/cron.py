@@ -29,7 +29,7 @@ class SendMessages(CronJobBase):
         to_address_2  = 'zakkeener@gmail.com'
           
         # Gmail Credentials
-        username = 'dogefact'
+        username = 'dogefact@gmail.com'
         password = 'dogepassword'
         server = smtplib.SMTP('smtp.gmail.com:587')  
         server.ehlo()

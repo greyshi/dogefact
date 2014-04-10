@@ -23,8 +23,8 @@ class SendMessages(CronJobBase):
         AUTH_TOKEN = "c60430045deb77bddaa548e370cba36a"
 
         client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
-        
-        from_address = 'dogefactact@gmail.com'  
+
+        from_address = 'dogefact@gmail.com'  
         to_address  = 'arashghoreyshi@gmail.com'
         to_address_2  = 'zakkeener@gmail.com'
           

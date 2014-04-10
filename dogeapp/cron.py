@@ -56,7 +56,7 @@ class SendMessages(CronJobBase):
                     msg['To'] = to_address
                     # Send Mail
                     server.sendmail(from_address, [to_address, to_address_2], msg.as_string())  
-                    server.quit()
                 else:
                     u.current_message += 1
                     u.save()
+        server.quit()

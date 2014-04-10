@@ -55,3 +55,8 @@ class UserForm(ModelForm):
             raise ValidationError("The phone number you entered was too long. Please try again.")
         return input_number
 
+
+class DeleteUserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['phone_number']

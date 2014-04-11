@@ -1,5 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
+<script src="https://sandbox.google.com/checkout/inapp/lib/buy.js"></script>
+<script>
+  //Payment success handler
+  var successHandler = function(purchaseAction){
+    if (window.console != undefined) {
+      console.log("Purchase completed successfully.");
+    }
+    window.location = "{% url 'success' %}"
+  }
+
+  //Payment failure handler
+  var failureHandler = function(purchaseActionError){
+    if (window.console != undefined) {
+      console.log("Purchase did not complete.");
+    }
+  }
+
+  function purchase(){
+    google.payments.inapp.buy({
+      'jwt'     : "{{ token }}",
+      'success' : successHandler,
+      'failure' : failureHandler
+    });
+  }
+</script>
 <div class="container">
   <form role="form" id="delete_form" name="delete_form" action="/delete/{{ user.id }}/" method="post">
     {% csrf_token %}
@@ -8,6 +33,15 @@
   <div class="alert alert-info alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" area-hidden="true">&times;</button>
     Is <span id="phone_number" name="phone_number"><strong>{{ user.phone_number }}</strong></span> correct? If not, <a href="javascript:{}" onclick="document.getElementById('delete_form').submit();" class="alert-link">try again</a>.
+  </div>
+  <div class="jumbotron">
+    <h1>Subscribe</h1>
+    <p>30 days of dog fact texts for the low price of $1</p>
+    <button class="btn btn-primary btn-lg"
+      id="buybutton" name="buy" type="button"
+      onClick="purchase()">
+      Buy
+    </button>
   </div>
 </div>
 {% endblock content %}

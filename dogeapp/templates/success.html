@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="container">
+  <div class="jumbotron" style="background-color:#f1ffea">
+    <div class="row">
+      <div class="col-md-7 col-sm-12">
+        <h1><span class="text-success">Success</span>!</h1>
+        <p>
+          We got your dollar, and you should be getting your first fact very soon!
+        </p>
+        <p style="margin-top: -8px">
+          Enjoy the month!
+        </p>
+      </div>
+      <div class="col-md-5 col-sm-8">
+        <img class="img-responsive img-thumbnail" src="{% static 'images/doge.png' %}">
+        </img>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

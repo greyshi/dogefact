@@ -9,7 +9,9 @@ urlpatterns = patterns('',
     url(r'^subscribe/', 'dogeapp.views.subscribe', name='subscribe'),
     url(r'^about/', 'dogeapp.views.about', name='about'),
     url(r'^contact/', 'dogeapp.views.contact', name='contact'),
+    url(r'^success/', 'dogeapp.views.success', name='success'),
     url(r'^delete/(?P<user_id>\d+)/$', 'dogeapp.views.delete_user', name='delete_user'),
+    url(r'^confirm/', 'dogeapp.views.confirm', name='confirm'),
 
 
     url(r'^loaderio-7686b7498e0e98b1b05d0726a02467ec.html/',

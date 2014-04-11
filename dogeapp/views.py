@@ -1,13 +1,20 @@
 import datetime
 import time
+import smtplib  
+
 import jwt
 
+from email.mime.text import MIMEText
+
+from twilio.rest import TwilioRestClient
+from twilio import TwilioRestException
 from django.core.exceptions import ValidationError
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect, HttpResponse
 from django.conf import settings
 
 from models import User, Message, UserForm, DeleteUserForm
+
 
 def home(request):
     return render(request, 'home.html')
@@ -60,6 +67,39 @@ def confirm(request):
                 user = get_object_or_404(User, id=user_id)
                 user.confirmation_code = order_id
                 user.is_active = True
+
+                ACCOUNT_SID = "ACc05280a86f26b3e501c2773bda0b8ff5"
+                AUTH_TOKEN = "c60430045deb77bddaa548e370cba36a"
+                client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
+
+                try:
+                    client.messages.create(
+                        to=user.phone_number,
+                        from_="+15128722226",
+                        body=Message.objects.first().content,
+                    )
+                except (TwilioRestException, Exception) as e:
+                    from_address = 'dogefact@gmail.com'  
+                    to_address  = 'arashghoreyshi@gmail.com'
+                    to_address_2  = 'zakkeener@gmail.com'
+                      
+                    # Gmail Credentials
+                    username = 'dogefact@gmail.com'
+                    password = 'dogepassword'
+                    server = smtplib.SMTP('smtp.gmail.com:587')  
+                    server.ehlo()
+                    server.starttls()  
+                    server.ehlo()
+                    server.login(username,password)  
+                    msg = MIMEText("{0}\n{1}\n\n{2}".format(user.phone_number, datetime.datetime.utcnow(), e))
+                    msg['Subject'] = "Dogefact Failure"
+                    msg['From'] = from_address
+                    msg['To'] = to_address
+                    # Send Mail
+                    server.sendmail(from_address, [to_address, to_address_2], msg.as_string())  
+                else:
+                    user.current_message += 1
+
                 user.save()
                 return HttpResponse(order_id)
     return HttpResponseRedirect("/")

@@ -18,7 +18,6 @@ class SendMessages(CronJobBase):
     code = 'dogeapp.send_messages'    # a unique code
 
     def do(self):
-        # put your own credentials here
         ACCOUNT_SID = "ACc05280a86f26b3e501c2773bda0b8ff5"
         AUTH_TOKEN = "c60430045deb77bddaa548e370cba36a"
 

@@ -176,3 +176,9 @@ b {
     .form-horizontal .form-group .control-label {text-align:right;}
 }
 
+.twitter-share-button {
+      position:relative;
+      top:6px;
+      margin-right:15px;
+      margin-left:35px;
+}

@@ -1,7 +1,7 @@
 import string
 
 from django.db import models
-from django.forms import ModelForm
+from django.forms import ModelForm, Textarea
 from django.core.exceptions import ValidationError
 
 
@@ -22,7 +22,7 @@ class User(models.Model):
 
 
 class Message(models.Model):
-    content = models.TextField(max_length=160)
+    content = models.CharField(max_length=160, widget=Textarea)
     pub_date = models.DateTimeField('date published', auto_now_add=True,)
 
     def __unicode__(self):

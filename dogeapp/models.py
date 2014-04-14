@@ -1,8 +1,9 @@
 import string
 
 from django.db import models
-from django.forms import ModelForm, Textarea
+from django.forms import ModelForm
 from django.core.exceptions import ValidationError
+from django.core.validators import MaxLengthValidator
 
 
 class User(models.Model):
@@ -22,7 +23,7 @@ class User(models.Model):
 
 
 class Message(models.Model):
-    content = models.CharField(max_length=160, widget=Textarea)
+    content = models.TextField(validators=[MaxLengthValidator(160)])
     pub_date = models.DateTimeField('date published', auto_now_add=True,)
 
     def __unicode__(self):

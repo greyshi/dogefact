@@ -22,7 +22,7 @@ class User(models.Model):
 
 
 class Message(models.Model):
-    content = models.TextField()
+    content = models.TextField(max_length=160)
     pub_date = models.DateTimeField('date published', auto_now_add=True,)
 
     def __unicode__(self):

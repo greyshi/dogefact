@@ -27,11 +27,7 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 SELLER_ID = "01615563332406801299"
-SELLER_SECRET = "ijpkGZGCxSm3uuJag97lUA"
-
-AWS_STORAGE_BUCKET_NAME = 'dogefact'
-AWS_ACCESS_KEY_ID = 'AKIAIDRIBGQGL3RTLVMQ'
-AWS_SECRET_ACCESS_KEY = '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'
+SELLER_SECRET = "lBaVk2SmzJG21ryqOoSC2w"
 
 # Application definition
 
@@ -98,18 +94,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'dogehouse/static'),
 )
-
-
-# S3 configuration
-if not DEBUG:
-    AWS_S3_CUSTOM_DOMAIN = 'd30hwkkwvbp5yo.cloudfront.net'
-    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-    STATIC_URL = S3_URL
-
-    AWS_HEADERS = {
-        'Cache-Control': 'max-age=86400',
-    }
 
 
 # HEROKU config

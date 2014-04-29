@@ -45,8 +45,8 @@ def subscribe(request):
       "exp" : int(time.time() + 3600),
       "iat" : int(time.time()),
       "request" :{
-        "name" : "Doge Fact",
-        "description" : "A 30-day subscription to Doge Fact for {0}".format(u.phone_number),
+        "name" : "EvoFacts",
+        "description" : "A 15-day subscription to EvoFacts for {0}".format(u.phone_number),
         "price" : "1.00",
         "currencyCode" : "USD",
         "sellerData" : "user_id:{0}".format(u.id)

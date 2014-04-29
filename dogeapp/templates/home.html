@@ -14,26 +14,25 @@
   <div class="jumbotron" style="background-color:#f8f6d2">
     <div class="row">
       <div class="col-md-7 col-sm-12">
-        <h1> <span style="color: #4c4c4c">Doge Fact</span></h1>
+        <h1> <span style="color: #4c4c4c">Evolution Fact</span></h1>
         <p>
-          Get <b style="color:#666666">text messages</b> from <b style="color:#666666">Doge</b>, your favorite dog
+          Get <b style="color:#666666">text messages</b> from <b style="color:#666666">Evolution Facts</b>, your favorite dog
         </p>
         <p style="margin-top: -8px">
           1 amusing dog fact per day over 30 days for $1
         </p>
-        <p style="font-size: 120%; font-family: Comic Sans MS; margin-top: -8px; color: #d3ae5e">much fact, sub<strong style="color:#b98142">shibe</strong> below</p>
+        <p class="text-primary" style="font-size: 150%; margin-top: -10px;">Subscribe below</p>
         <form role="form" id="phone_form" name="phone_form" action="/subscribe/" method="post" >
           {% csrf_token %}
           <div class="row">
             <div class="form-group col-md-5 col-sm-4 col-ms-6 col-xs-10">
-              <input type="tel" style="font-family: Comic Sans MS" class="form-control input-lg" name="phone_number" id="phone_number" placeholder="ur phone number">
+              <input type="tel"  class="form-control input-lg" name="phone_number" id="phone_number" placeholder="your phone number">
             </div>
             <div class="form-group col-md-3 col-sm-4 col-ms-6 col-xs-12">
               <button type="submit" class="btn btn-primary btn-lg">Subscribe</button>
             </div>
           </div>
         </form>
-        <em><p style="font-size: 115%">10% of proceeds donated to <a href="http://www.hsi.org">Humane Society International</a></p></em>
       </div>
       <div class="col-md-5 col-sm-8">
         <img class="img-responsive img-thumbnail" src="{% static 'images/doge.png' %}">

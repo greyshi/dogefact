@@ -49,7 +49,7 @@ class SendMessages(CronJobBase):
                         body=messages[u.current_message].content,
                     )
                 except (TwilioRestException, Exception) as e:
-                    if "violates a blacklist rule" not in e:
+                    if "violates a blacklist rule" not in e.message:
                         msg = MIMEText("{0}\n{1}\n\n{2}".format(u.phone_number, datetime.datetime.utcnow(), e))
                         msg['Subject'] = "Dogefact Failure"
                         msg['From'] = from_address
